@@ -4,10 +4,10 @@ from django.db import models
 
 
 class Issue(models.Model):
-    CRITICAL = 'C'
-    HIGH = 'H'
-    MEDIUM = 'M'
-    LOW = 'L'
+    CRITICAL = 'Critical'
+    HIGH = 'High'
+    MEDIUM = 'Medium'
+    LOW = 'Low'
     PRIORITY_CHOICES = [
         (CRITICAL, 'Critical'),
         (HIGH, 'High'),
@@ -17,7 +17,7 @@ class Issue(models.Model):
     issue_text = models.TextField()
     date_posted = models.DateTimeField('date_posted')
     priority = models.CharField(
-        max_length=1,
+        max_length=8,
         choices=PRIORITY_CHOICES,
         default=LOW,
     )

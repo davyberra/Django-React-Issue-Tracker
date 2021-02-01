@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+    <h2>Issues</h2>
+    <ul>
+        {% for issue in object_list %}
+            <li>{{ issue.issue_text }} - Posted on {{ issue.date_posted }}
+                <ul>
+                    <li>Priority Level: {{ issue.priority }}
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

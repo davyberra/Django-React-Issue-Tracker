@@ -1,14 +1,44 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
+from django.utils import timezone
 
 from .models import Issue
+from .forms import NameForm, IssueForm
 
 # Create your views here.
 
+def get_name(request):
+    if request.method == 'POST':
+        form = NameForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('')
+    else:
+        form = NameForm()
 
-def index(request):
-    return HttpResponse("This is the index page of the Issue Tracker app.")
+    return render(request, 'issue_tracker/name.html', {'form': form})
 
-class IssueView(generic.DetailView):
+# def index(request):
+#     return HttpResponse("This is the index page of the Issue Tracker app.")
+
+class IndexView(generic.ListView):
+    template_name = "issue_tracker/IndexView.html"
     model = Issue
+
+def new_issue(request):
+    if request.method == 'POST':
+        form = IssueForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['issue_text']
+            date_posted = timezone.now()
+            priority = form.cleaned_data['priority']
+            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority)
+            issue.save()
+            return HttpResponseRedirect('/issue_tracker/success/')
+    else:
+        form = IssueForm()
+
+    return render(request, 'issue_tracker/issue_view.html', {'form': form})
+
+def success_view(request):
+    return render(request, 'issue_tracker/success_view.html')
