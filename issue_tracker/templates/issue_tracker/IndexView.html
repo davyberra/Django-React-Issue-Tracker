@@ -1,15 +1,29 @@
-{% extends "admin/base.html" %}
+{% load static %}
 
-{% block content %}
-    <h2>Issues</h2>
-    <ul>
-        {% for issue in object_list %}
-            <li>{{ issue.issue_text }} - Posted on {{ issue.date_posted }}
-                <ul>
-                    <li>Priority Level: {{ issue.priority }}
-                    </li>
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+
+    {% block content %}
+
+        <h1>Issue Tracker</h1>
+        <h2>Issues</h2>
+        <ul>
+            {% for issue in object_list %}
+                <li>{{ issue.issue_text }} - Posted on {{ issue.date_posted }}
+                    <ul>
+                        <li>Priority Level: {{ issue.priority }}
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>
+

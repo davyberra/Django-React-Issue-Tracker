@@ -10,3 +10,9 @@ class IssueForm(ModelForm):
     class Meta:
         model = Issue
         fields = ['issue_text', 'priority']
+
+
+class IssueDetailForm(ModelForm):
+    class Meta:
+        model = Issue
+        fields = ['issue_text', 'priority']

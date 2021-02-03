@@ -1,0 +1,18 @@
+h1, h2 {
+    color: HotPink;
+    text-align: center;
+    font-family: Arial, Helvetica, Sans-serif;
+}
+
+li {
+    color: green;
+}
+
+li ul li {
+    color: blue;
+    text-align: right;
+}
+
+body {
+    color: green;
+}
