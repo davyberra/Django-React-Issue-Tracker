@@ -5,25 +5,34 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
-    <title>Title</title>
+    <title>Issue Tracker</title>
 </head>
 <body>
 
-    {% block content %}
+<!--    {% block content %}-->
 
         <h1>Issue Tracker</h1>
-        <h2>Issues</h2>
-        <ul>
+    <a href="/issue_tracker/new_issue/" class="button">Add Issue</a>
+        <table>
+            <tr>
+                <th>Issue</th>
+                <th>Date Posted</th>
+                <th>Priority</th>
+                <th>In Progress</th>
+                <th>Actions</th>
+            </tr>
             {% for issue in object_list %}
-                <li>{{ issue.issue_text }} - Posted on {{ issue.date_posted }}
-                    <ul>
-                        <li>Priority Level: {{ issue.priority }}
-                        </li>
-                    </ul>
-                </li>
+            <tr>
+                <td>{{ issue.issue_text }}</td>
+                <td>{{ issue.date_posted }}</td>
+                <td>{{ issue.priority }}</td>
+                <td><input type="checkbox" id="in_progress"</td>
+                <td></td>
+            </tr>
             {% endfor %}
-        </ul>
-    {% endblock %}
+        </table>
+
+<!--    {% endblock %}-->
 </body>
 </html>
 

@@ -1,7 +1,13 @@
+html {
+    background-color: #d6d6d6;
+    font-family: Helvetica;
+}
+
 h1, h2 {
-    color: HotPink;
-    text-align: center;
-    font-family: Arial, Helvetica, Sans-serif;
+    color: black;
+    text-align: left;
+    padding: 40px 20px;
+    font-size: 48px;
 }
 
 li {
@@ -13,6 +19,38 @@ li ul li {
     text-align: right;
 }
 
-body {
-    color: green;
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+
+
+
+}
+
+th {
+    border: 1px solid gray;
+
+    font-size: 24px;
+
+    padding: 10px;
+
+}
+
+td {
+    border: 1px solid gray;
+    text-align: center;
+
+    padding: 5px;
+}
+
+.button {
+    padding: 10px 5px 10px 5px;
+    text-decoration: None;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 20px;
+    background-color: #107aa8;
+    color: white;
 }
