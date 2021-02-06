@@ -54,3 +54,20 @@ td {
     background-color: #107aa8;
     color: white;
 }
+
+div.issue_text {
+    border: 3px solid black;
+    margin: 0 auto;
+    padding: 20px;
+    margin: 20px 20px;
+}
+
+.priority {
+    margin: 0 auto;
+}
+
+.test {
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}

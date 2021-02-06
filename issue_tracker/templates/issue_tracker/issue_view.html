@@ -1,5 +1,12 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
+
+<a href="/issue_tracker/" class="button">Home</a>
 <form action="/issue_tracker/new_issue/" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+    <div class="issue_text" style="width: 100%;margin: 50px">{{ form.issue_text }}</div>
+    <div class="priority">{{ form.priority }}</div>
+    <input type="submit" value="Submit" class="submit">
+
 </form>
