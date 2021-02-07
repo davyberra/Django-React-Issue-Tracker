@@ -9,11 +9,39 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<a href="/issue_tracker/" class="button">Home</a>
-<form action="/issue_tracker/new_issue/" method="post">
-    {% csrf_token %}
-    <div class="issue_text" style="width: 100%;margin: 50px">{{ form.issue_text }}</div>
-    <div class="priority">{{ form.priority }}</div>
-    <input type="submit" value="Submit" class="submit">
 
-</form>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Issue Tracker</h1>
+        <h3 class="text-right">By Davy Berra</h3>
+        <a href="/issue_tracker/" class="btn btn-info" role="button">Home</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <h1>New Issue</h1>
+        <p>Submit a new issue below.</p>
+        <p>Be sure to select an appropriate priority level.</p>
+
+    </div>
+</div>
+<div class="container">
+
+    <form action="/issue_tracker/new_issue/" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="issue_text">{{ form.issue_text }}</div>
+            </div>
+            <div class="col-sm-12">
+                <div class="priority">{{ form.priority }}</div>
+            </div>
+            <div class="col-sm-12">
+                <input type="submit" value="Submit" class="submit">
+            </div>
+        </div>
+    </form>
+</div>
+
+

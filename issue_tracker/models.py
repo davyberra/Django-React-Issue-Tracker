@@ -21,6 +21,12 @@ class Issue(models.Model):
         choices=PRIORITY_CHOICES,
         default=LOW,
     )
+    priority_mappings = {
+        'Critical': 'danger',
+        'High': 'warning',
+        'Medium': 'info',
+        'Low': 'success',
+    }
 
     def __str__(self):
         return self.issue_text

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.utils import timezone
@@ -42,3 +42,14 @@ def new_issue(request):
 
 def success_view(request):
     return render(request, 'issue_tracker/success_view.html')
+
+def delete_view(request, id):
+    context = {}
+
+    obj = get_object_or_404(Issue, id=id)
+
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect("/")
+
+    return render(request, "issue_tracker/delete_view.html", context)
