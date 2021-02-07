@@ -1,73 +1,11 @@
-html {
-    background-color: #d6d6d6;
-    font-family: Helvetica;
-}
-
-h1, h2 {
-    color: black;
-    text-align: left;
-    padding: 40px 20px;
-    font-size: 48px;
-}
-
-li {
-    color: green;
-}
-
-li ul li {
-    color: blue;
-    text-align: right;
-}
-
-table {
-    margin: 0 auto;
-    border-collapse: collapse;
-
+.wrapper {
+    margin: 10px 0px 10px 0px;
 
 
 }
 
-th {
-    border: 1px solid gray;
 
-    font-size: 24px;
 
-    padding: 10px;
-
-}
-
-td {
-    border: 1px solid gray;
-    text-align: center;
-
-    padding: 5px;
-}
-
-.button {
-    padding: 10px 5px 10px 5px;
-    text-decoration: None;
-    border-top: 1px solid #CCCCCC;
-    border-right: 1px solid #333333;
-    border-bottom: 1px solid #333333;
-    border-left: 1px solid #CCCCCC;
-    margin: 20px;
-    background-color: #107aa8;
-    color: white;
-}
-
-div.issue_text {
-    border: 3px solid black;
-    margin: 0 auto;
-    padding: 20px;
-    margin: 20px 20px;
-}
-
-.priority {
-    margin: 0 auto;
-}
-
-.test {
-    text-align: center;
-    padding: 20px;
-    margin: 20px;
+.table {
+    margin: 10px 0px 0px 0px;
 }

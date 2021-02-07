@@ -3,7 +3,7 @@
 <!--<link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">-->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+<link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -30,15 +30,23 @@
 
     <form action="/issue_tracker/new_issue/" method="post">
         {% csrf_token %}
-        <div class="row">
+        <div class="row wrapper">
             <div class="col-sm-12">
-                <div class="issue_text">{{ form.issue_text }}</div>
+                <label>Describe the issue.
+                    <div class="issue_text">{{ form.issue_text }}</div>
+                </label>
             </div>
+        </div>
+        <div class="row wrapper">
             <div class="col-sm-12">
-                <div class="priority">{{ form.priority }}</div>
+                <label>Priority
+                    <div class="priority">{{ form.priority }}</div>
+                </label>
             </div>
+        </div>
+        <div class="row wrapper">
             <div class="col-sm-12">
-                <input type="submit" value="Submit" class="submit">
+                <input type="submit" value="Submit" class="btn btn-primary">
             </div>
         </div>
     </form>
