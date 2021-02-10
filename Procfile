@@ -1,1 +1,1 @@
-web: gunicorn davys_issue_tracker.wsgi --log-file -
+web: gunicorn davys_issue_tracker.deploy --log-file -
