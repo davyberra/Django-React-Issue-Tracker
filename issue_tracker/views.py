@@ -21,9 +21,17 @@ def get_name(request):
 # def index(request):
 #     return HttpResponse("This is the index page of the Issue Tracker app.")
 
+
 class IndexView(generic.ListView):
     template_name = "issue_tracker/IndexView.html"
     model = Issue
+
+    def get_context_data(self, request):
+        context = super().get_context_data(**kwargs)
+        num_visits = request.session.get('num_visits', 1)
+        request.session['num_visits'] = num_visits + 1
+
+
 
 def new_issue(request):
     if request.method == 'POST':
@@ -40,8 +48,18 @@ def new_issue(request):
 
     return render(request, 'issue_tracker/issue_view.html', {'form': form})
 
+
 def success_view(request):
-    return render(request, 'issue_tracker/success_view.html')
+
+    num_visits = request.session.get('num_visits', 1)
+    request.session['num_visits'] = num_visits + 1
+
+    context = {
+        'num_visits': num_visits,
+    }
+
+    return render(request, 'issue_tracker/success_view.html', context=context)
+
 
 def delete_view(request, id):
     context = {}
