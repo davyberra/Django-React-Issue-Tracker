@@ -26,10 +26,7 @@ class IndexView(generic.ListView):
     template_name = "issue_tracker/IndexView.html"
     model = Issue
 
-    def get_context_data(self, request):
-        context = super().get_context_data(**kwargs)
-        num_visits = request.session.get('num_visits', 1)
-        request.session['num_visits'] = num_visits + 1
+
 
 
 
