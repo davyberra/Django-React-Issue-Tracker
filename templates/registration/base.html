@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Issue Tracker</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Issue Tracker</h1>
+        <h3 class="text-right">By Davy Berra</h3>
+    </div>
+</div>
+{% block content %}{% endblock content %}
+</div>
+
+
+</body>
+</html>
+
