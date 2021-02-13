@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -21,12 +22,13 @@ class Issue(models.Model):
         choices=PRIORITY_CHOICES,
         default=LOW,
     )
-    priority_mappings = {
-        'Critical': 'danger',
-        'High': 'warning',
-        'Medium': 'info',
-        'Low': 'success',
-    }
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    # priority_mappings = {
+    #     'Critical': 'danger',
+    #     'High': 'warning',
+    #     'Medium': 'info',
+    #     'Low': 'success',
+    # }
 
     def __str__(self):
         return self.issue_text

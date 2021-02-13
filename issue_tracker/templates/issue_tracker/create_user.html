@@ -1,0 +1,24 @@
+{% extends "registration/base.html" %}
+
+{% load static %}
+
+{% block title %}Issue Tracker - Create New User{% endblock %}
+
+{% block content %}
+
+<h1>Create a New User</h1>
+<form action="/create_user/" method="post">
+    {% csrf_token %}
+        <label>Enter a username.
+            <div>{{ form.username }}</div>
+        </label>
+        <label>Enter an email address.
+            <div>{{ form.email }}</div>
+        </label>
+        <label>Enter a password.
+            <div>{{ form.password }}</div>
+        </label>
+        <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+{% endblock %}

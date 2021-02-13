@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "registration/base.html" %}
+{% load static %}
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% block title %}Issue Tracker - Delete Issue Confirmation{% endblock %}
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Delete Issue Confirmation</title>
-</head>
-
-<body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Issue Tracker</h1>
-        <h3 class="text-right">By Davy Berra</h3>
-        <a href="/issue_tracker/" class="btn btn-info" role="button">Home</a>
-    </div>
-</div>
-
+{% block content %}
 <div class="container">
     <form method="POST">
         {% csrf_token %}
@@ -33,5 +14,4 @@
         <a href="/" class="btn btn-danger" role="button">Cancel</a>
     </form>
 </div>
-</body>
-</html>
+{% endblock %}

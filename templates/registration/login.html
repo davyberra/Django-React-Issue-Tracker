@@ -1,5 +1,7 @@
 {% extends "registration/base.html" %}
-<body>
+
+{% block title %}Issue Tracker - Login{% endblock %}
+
 {% block content %}
 
   {% if form.errors %}
@@ -35,4 +37,3 @@
   <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
 
 {% endblock %}
-</body>

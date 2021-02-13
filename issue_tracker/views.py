@@ -4,10 +4,14 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Issue
-from .forms import NameForm, IssueForm
+from .forms import NameForm, IssueForm, CreateUserForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 # Create your views here.
 
+@login_required
 def get_name(request):
     if request.method == 'POST':
         form = NameForm(request.POST)
@@ -22,14 +26,13 @@ def get_name(request):
 #     return HttpResponse("This is the index page of the Issue Tracker app.")
 
 
-class IndexView(generic.ListView):
+
+class IndexView(LoginRequiredMixin, generic.ListView):
     template_name = "issue_tracker/IndexView.html"
     model = Issue
 
 
-
-
-
+@login_required
 def new_issue(request):
     if request.method == 'POST':
         form = IssueForm(request.POST)
@@ -37,7 +40,8 @@ def new_issue(request):
             text = form.cleaned_data['issue_text']
             date_posted = timezone.now()
             priority = form.cleaned_data['priority']
-            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority)
+            user = request.user
+            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user)
             issue.save()
             return HttpResponseRedirect('/issue_tracker/success/')
     else:
@@ -46,6 +50,23 @@ def new_issue(request):
     return render(request, 'issue_tracker/issue_view.html', {'form': form})
 
 
+def create_user(request):
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            new_user = User.objects.create_user(username=username, email=email, password=password)
+            new_user.save()
+            return HttpResponseRedirect('/accounts/login/')
+    else:
+        form = CreateUserForm()
+
+    return render(request, 'issue_tracker/create_user.html', {'form': form})
+
+
+@login_required
 def success_view(request):
 
     num_visits = request.session.get('num_visits', 1)
@@ -58,6 +79,7 @@ def success_view(request):
     return render(request, 'issue_tracker/success_view.html', context=context)
 
 
+@login_required
 def delete_view(request, id):
     context = {}
 

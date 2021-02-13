@@ -1,22 +1,10 @@
+{% extends "registration/base.html" %}
+
 {% load static %}
 
-<!--<link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">-->
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'issue_tracker/style.css' %}">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% block title %}Issue Tracker - New Issue{% endblock %}
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<div class="container">
-    <div class="jumbotron">
-        <h1>Issue Tracker</h1>
-        <h3 class="text-right">By Davy Berra</h3>
-        <a href="/issue_tracker/" class="btn btn-info" role="button">Home</a>
-    </div>
-</div>
+{% block content %}
 
 <div class="container">
     <div class="page-header">
@@ -52,4 +40,4 @@
     </form>
 </div>
 
-
+{% endblock %}
