@@ -29,6 +29,9 @@
             {% endif %}
         {% endfor %}
     </table>
+    {% for project in object_list %}
+        <p>{{ project.project_name }}</p>
+    {% endfor %}
 </div>
 {% endblock %}
 

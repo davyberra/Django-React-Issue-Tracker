@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Issue
+from .models import Issue, Project
 from .forms import NameForm, IssueForm, CreateUserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -26,10 +26,21 @@ def get_name(request):
 #     return HttpResponse("This is the index page of the Issue Tracker app.")
 
 
+class IndexView(LoginRequiredMixin, generic.DetailView):
 
-class IndexView(LoginRequiredMixin, generic.ListView):
+
     template_name = "issue_tracker/IndexView.html"
     model = Issue
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['projects'] = Project.objects.all()
+        return context
+
+
+class ProjectView(LoginRequiredMixin, generic.ListView):
+    template_name = "issue_tracker/ProjectView.html"
+    model = Project
 
 
 @login_required
@@ -76,7 +87,7 @@ def success_view(request):
         'num_visits': num_visits,
     }
 
-    return render(request, 'issue_tracker/success_view.html', context=context)
+    return render(request, 'issue_tracker/success_view.html')
 
 
 @login_required

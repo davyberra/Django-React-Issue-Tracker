@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class Project(models.Model):
+    project_name = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return self.project_name
+
 class Issue(models.Model):
     CRITICAL = 'Critical'
     HIGH = 'High'
@@ -23,6 +30,7 @@ class Issue(models.Model):
         default=LOW,
     )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True)
     # priority_mappings = {
     #     'Critical': 'danger',
     #     'High': 'warning',
@@ -32,3 +40,5 @@ class Issue(models.Model):
 
     def __str__(self):
         return self.issue_text
+
+
