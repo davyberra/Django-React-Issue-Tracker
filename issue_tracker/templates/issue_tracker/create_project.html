@@ -1,0 +1,21 @@
+{% extends "registration/base.html" %}
+
+{% load static %}
+
+{% block title %}Issue Tracker - Create a New Project{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form action="/issue_tracker/create_project/" method="post">
+        {% csrf_token %}
+        <div class="row wrapper">
+            <div class="col-sm-12">
+                <label>What is the name of your new project?
+                    <div class="project_name">{{ form.project_name }}</div>
+                </label>
+            </div>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
+{% endblock %}

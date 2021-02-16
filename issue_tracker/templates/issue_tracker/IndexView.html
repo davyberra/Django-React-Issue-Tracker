@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container">
-    <a href="/issue_tracker/new_issue/" class="btn btn-primary" role="button">Add Issue</a>
+    <a href="/{{ project.id }}/new_issue/" class="btn btn-primary" role="button">Add Issue</a>
     <table class="table table-hover">
         <tr class="well well-sm">
             <th>Issue</th>
@@ -16,7 +16,7 @@
             <th>In Progress</th>
             <th>Actions</th>
         </tr>
-        {% for issue in object_list %}
+        {% for issue in project.issue_set.all %}
             {% if issue.user == user %}
                 <tr>
                     <td>{{ issue.issue_text }}</td>

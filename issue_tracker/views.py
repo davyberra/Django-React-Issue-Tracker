@@ -4,7 +4,7 @@ from django.views import generic
 from django.utils import timezone
 
 from .models import Issue, Project
-from .forms import NameForm, IssueForm, CreateUserForm
+from .forms import NameForm, IssueForm, CreateUserForm, CreateProjectForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -28,14 +28,8 @@ def get_name(request):
 
 class IndexView(LoginRequiredMixin, generic.DetailView):
 
-
     template_name = "issue_tracker/IndexView.html"
-    model = Issue
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data()
-        context['projects'] = Project.objects.all()
-        return context
+    model = Project
 
 
 class ProjectView(LoginRequiredMixin, generic.ListView):
@@ -44,7 +38,7 @@ class ProjectView(LoginRequiredMixin, generic.ListView):
 
 
 @login_required
-def new_issue(request):
+def new_issue(request, pk):
     if request.method == 'POST':
         form = IssueForm(request.POST)
         if form.is_valid():
@@ -52,13 +46,31 @@ def new_issue(request):
             date_posted = timezone.now()
             priority = form.cleaned_data['priority']
             user = request.user
-            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user)
+            project = Project.objects.get(id=pk)
+            project = project.project_name
+            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user, project=project)
             issue.save()
             return HttpResponseRedirect('/issue_tracker/success/')
     else:
         form = IssueForm()
 
     return render(request, 'issue_tracker/issue_view.html', {'form': form})
+
+
+def create_project(request):
+    if request.method == 'POST':
+        form = CreateProjectForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['project_name']
+            user = request.user
+            project = Project(project_name=name, user=user)
+            project.save()
+            return HttpResponseRedirect('/projects/')
+
+    else:
+        form = CreateProjectForm()
+
+    return render(request, 'issue_tracker/create_project.html', {'form': form})
 
 
 def create_user(request):
