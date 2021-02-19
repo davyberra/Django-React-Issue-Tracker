@@ -47,14 +47,15 @@ def new_issue(request, pk):
             priority = form.cleaned_data['priority']
             user = request.user
             project = Project.objects.get(id=pk)
-            project = project.project_name
+            # project = project.project_name
             issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user, project=project)
             issue.save()
-            return HttpResponseRedirect('/issue_tracker/success/')
+            return HttpResponseRedirect(f'/issue_tracker/{pk}/success/')
     else:
         form = IssueForm()
 
-    return render(request, 'issue_tracker/issue_view.html', {'form': form})
+    return render(request, 'issue_tracker/issue_view.html', {'form': form,
+                                                             'pk': pk})
 
 
 def create_project(request):
@@ -90,7 +91,7 @@ def create_user(request):
 
 
 @login_required
-def success_view(request):
+def success_view(request, pk):
 
     num_visits = request.session.get('num_visits', 1)
     request.session['num_visits'] = num_visits + 1
@@ -99,17 +100,30 @@ def success_view(request):
         'num_visits': num_visits,
     }
 
-    return render(request, 'issue_tracker/success_view.html')
+    return render(request, 'issue_tracker/success_view.html', context={'pk': pk})
 
 
 @login_required
-def delete_view(request, id):
-    context = {}
+def delete_view(request, id, pk):
+    context = {'pk': pk}
 
     obj = get_object_or_404(Issue, id=id)
 
     if request.method == "POST":
         obj.delete()
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect(f"/{pk}/issues/")
 
     return render(request, "issue_tracker/delete_view.html", context)
+
+
+@login_required
+def delete_project_view(request, pk):
+    context = {'pk': pk}
+
+    obj = get_object_or_404(Project, id=pk)
+
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect('/projects/')
+
+    return render(request, "issue_tracker/delete_project_view.html", context)

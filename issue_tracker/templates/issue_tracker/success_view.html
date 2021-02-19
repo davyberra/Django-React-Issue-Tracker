@@ -6,7 +6,7 @@
 {% block content %}
 <div class="container">
     <p>{{ num_visits }}</p>
-    <form action="{% url 'issue' %}">
+    <form action="/{{ pk }}/issues/">
         <div class="alert alert-success">
             <strong>Success!</strong> Form submitted successfully.
         </div>

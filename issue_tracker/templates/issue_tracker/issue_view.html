@@ -16,7 +16,7 @@
 </div>
 <div class="container">
 
-    <form action="/{{ issue.project.id }}/new_issue/" method="post">
+    <form action="/{{ pk }}/new_issue/" method="post">
         {% csrf_token %}
         <div class="row wrapper">
             <div class="col-sm-12">

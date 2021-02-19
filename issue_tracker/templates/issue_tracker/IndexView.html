@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Issue Tracker - Home{% endblock %}
+{% block title %}Issue Tracker - {{ project.project_name }}{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -24,7 +24,7 @@
                     <td>{{ issue.date_posted }}</td>
                     <td>{{ issue.priority }}</td>
                     <td><input type="checkbox" id="in_progress"></td>
-                    <td><a href="/{{ issue.id }}/delete" class="btn btn-link" role="button">delete</a></td>
+                    <td><a href="/{{ project.id }}/{{ issue.id }}/delete" class="btn btn-link" role="button">delete</a></td>
                 </tr>
             {% endif %}
         {% endfor %}
