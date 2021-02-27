@@ -31,6 +31,8 @@ class Issue(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True)
+    in_progress = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)
     # priority_mappings = {
     #     'Critical': 'danger',
     #     'High': 'warning',

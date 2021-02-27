@@ -11,4 +11,6 @@ urlpatterns = [
     path('create_user/', views.create_user, name='create_user'),
     path('projects/', views.ProjectView.as_view(), name='project'),
     path('create_project/', views.create_project, name='create_project'),
+    path('<int:pk>/<id>/complete/', views.complete_issue_view, name='complete_issue'),
+    path('<int:pk>/completed_issues/', views.CompletedIssuesIndexView.as_view(), name='completed_issues'),
 ]

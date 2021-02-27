@@ -127,3 +127,22 @@ def delete_project_view(request, pk):
         return HttpResponseRedirect('/projects/')
 
     return render(request, "issue_tracker/delete_project_view.html", context)
+
+
+@login_required()
+def complete_issue_view(request, id, pk):
+    context = {'pk': pk}
+    obj = get_object_or_404(Issue, id=id)
+
+    if request.method == "POST":
+        obj.completed = True
+        obj.save()
+        return HttpResponseRedirect(f'/{pk}/issues/')
+
+    return render(request, "issue_tracker/complete_view.html", context)
+
+
+class CompletedIssuesIndexView(LoginRequiredMixin, generic.DetailView):
+
+    template_name = "issue_tracker/completed_issues_index_view.html"
+    model = Project

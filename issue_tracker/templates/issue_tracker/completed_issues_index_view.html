@@ -2,35 +2,32 @@
 
 {% load static %}
 
-{% block title %}Issue Tracker - {{ project.project_name }}{% endblock %}
+{% block title %}Issue Tracker - {{ project.project_name }} - Completed Issues{% endblock %}
 
 {% block content %}
 <div class="container">
     <a href="/{{ project.id }}/new_issue/" class="btn btn-primary" role="button">Add Issue</a>
-    <a href="/{{ project.id }}/completed_issues/" class="btn btn-primary" role="button">Completed Issues</a>
     <table class="table table-hover">
         <tr class="well well-sm">
             <th>Issue</th>
             <th>Submitted By</th>
             <th>Date Posted</th>
             <th>Priority</th>
-            <th>In Progress</th>
             <th>Actions</th>
         </tr>
         {% for issue in project.issue_set.all %}
-            {% if issue.user == user and issue.completed == False %}
+            {% if issue.user == user and issue.completed == True %}
                 <tr>
                     <td>{{ issue.issue_text }}</td>
                     <td>{{ issue.user }}</td>
                     <td>{{ issue.date_posted }}</td>
                     <td>{{ issue.priority }}</td>
-                    <td><input type="checkbox" id="in_progress"></td>
-                    <td><a href="/{{ project.id }}/{{ issue.id }}/complete" class="btn btn-link" role="button">Mark as Complete</a>|
-                        <a href="/{{ project.id }}/{{ issue.id }}/delete" class="btn btn-link" role="button">Delete</a></td>
+                    <td><a href="/{{ project.id }}/{{ issue.id }}/delete" class="btn btn-link" role="button">Delete</a></td>
                 </tr>
             {% endif %}
         {% endfor %}
     </table>
+    <a href="/{{ project.id }}/issues/" class="btn btn-danger" role="button">Back</a>
 </div>
 {% endblock %}
 
