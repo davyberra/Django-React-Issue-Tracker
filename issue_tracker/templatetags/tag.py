@@ -7,7 +7,8 @@ register = template.Library()
 def get_issue_count(project):
     count = 0
     for issue in project.issue_set.all():
-        count += 1
+        if issue.completed == False:
+            count += 1
 
     return count
 
