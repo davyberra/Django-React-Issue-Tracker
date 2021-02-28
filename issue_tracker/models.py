@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,6 +26,7 @@ class Issue(models.Model):
     ]
     issue_text = models.TextField()
     date_posted = models.DateTimeField('date_posted')
+    date_completed = models.DateTimeField('date_completed', null=True)
     priority = models.CharField(
         max_length=8,
         choices=PRIORITY_CHOICES,

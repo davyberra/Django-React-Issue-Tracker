@@ -12,6 +12,7 @@
             <th>Issue</th>
             <th>Submitted By</th>
             <th>Date Posted</th>
+            <th>Date Completed</th>
             <th>Priority</th>
             <th>Actions</th>
         </tr>
@@ -21,6 +22,7 @@
                     <td>{{ issue.issue_text }}</td>
                     <td>{{ issue.user }}</td>
                     <td>{{ issue.date_posted }}</td>
+                    <td>{{ issue.date_completed }}</td>
                     <td>{{ issue.priority }}</td>
                     <td><a href="/{{ project.id }}/{{ issue.id }}/delete" class="btn btn-link" role="button">Delete</a></td>
                 </tr>

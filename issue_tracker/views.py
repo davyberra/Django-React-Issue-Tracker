@@ -136,6 +136,7 @@ def complete_issue_view(request, id, pk):
 
     if request.method == "POST":
         obj.completed = True
+        obj.date_completed = timezone.now()
         obj.save()
         return HttpResponseRedirect(f'/{pk}/issues/')
 
