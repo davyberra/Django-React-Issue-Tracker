@@ -26,7 +26,7 @@ class Issue(models.Model):
     ]
     issue_text = models.TextField()
     date_posted = models.DateTimeField('date_posted')
-    date_completed = models.DateTimeField('date_completed', null=True)
+    # date_completed = models.DateTimeField('date_completed', null=True)
     priority = models.CharField(
         max_length=8,
         choices=PRIORITY_CHOICES,
@@ -34,8 +34,8 @@ class Issue(models.Model):
     )
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True)
-    in_progress = models.BooleanField(default=False)
-    completed = models.BooleanField(default=False)
+    # in_progress = models.BooleanField(default=False)
+    # completed = models.BooleanField(default=False)
     # priority_mappings = {
     #     'Critical': 'danger',
     #     'High': 'warning',
