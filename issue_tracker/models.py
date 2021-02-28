@@ -37,7 +37,7 @@ class Issue(models.Model):
     in_progress = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
     # priority_mappings = {
-    #     'Critical': 'danger',
+    #     'Critical': 'danger',how
     #     'High': 'warning',
     #     'Medium': 'info',
     #     'Low': 'success',
