@@ -46,9 +46,11 @@ def new_issue(request, pk):
             date_posted = timezone.now()
             priority = form.cleaned_data['priority']
             user = request.user
+            issue_type = form.cleaned_data['issue_type']
             project = Project.objects.get(id=pk)
             # project = project.project_name
-            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user, project=project)
+            issue = Issue(issue_text=text, date_posted=date_posted, priority=priority, user=user, project=project,
+                          issue_type=issue_type)
             issue.save()
             return HttpResponseRedirect(f'/issue_tracker/{pk}/success/')
     else:
