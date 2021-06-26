@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from .models import Project, Issue
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ['project_name', 'user']
 
-class IssueSerializer(serializers.HyperlinkedModelSerializer):
+class IssueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
         fields = [
