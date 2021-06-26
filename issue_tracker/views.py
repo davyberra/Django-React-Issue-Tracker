@@ -3,13 +3,28 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.utils import timezone
 
+from rest_framework import viewsets, permissions
+from .serializers import ProjectSerializer, IssueSerializer
+
 from .models import Issue, Project
 from .forms import NameForm, IssueForm, CreateUserForm, CreateProjectForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 
-# Create your views here.
+class ProjectViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows projects to be viewed and edited.
+    """
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class IssueViewSet(viewsets.ModelViewSet):
+
+    queryset = Issue.objects.all()
+    serializer_class = IssueSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 @login_required
 def get_name(request):
