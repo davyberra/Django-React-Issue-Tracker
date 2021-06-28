@@ -19,7 +19,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     """
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 class IssueViewSet(viewsets.ModelViewSet):
 
@@ -48,7 +48,7 @@ class IndexView(LoginRequiredMixin, generic.DetailView):
     model = Project
 
 
-class ProjectView(LoginRequiredMixin, generic.ListView):
+class ProjectView(generic.ListView):
     template_name = "issue_tracker/ProjectView.html"
     model = Project
 

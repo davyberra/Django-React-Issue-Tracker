@@ -13,15 +13,17 @@ function App() {
       .getAll()
       .then(initialProjects => {
         setProjects(initialProjects)
+        
       })
-  })
-
+    }, []
+  )
 
   return (
     <div className="App">
       <Header />
+
       <ul>
-        {projects.map(project => <Project project={project} />)}
+        {projects.map(project => <Project project={project}  />)}
       </ul>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Project = (project) => {
+const Project = ({ project }) => {
   return (
     <li className='project'>
       {project.project_name}
