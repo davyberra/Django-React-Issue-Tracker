@@ -23,7 +23,13 @@ const Login = () => {
       password: password
     }
 
-    axios.post('http://127.0.0.1:8000/api/v1/issue_tracker/auth/login', user)
+    fetch('http://127.0.0.1:8000/api/v1/issue_tracker/auth/login/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
       .then(res => res.json())
       .then(data => {
         if (data.key) {

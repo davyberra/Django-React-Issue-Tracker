@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\components",
+    "\\src\\services",
+    "\\src\\views",
+    "\\src\\views\\auth"
   ],
-  "SelectedNode": "\\src\\Issue.js",
+  "SelectedNode": "\\src\\views\\auth\\Signup.js",
   "PreviewInSolutionExplorer": false
 }

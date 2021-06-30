@@ -3,7 +3,7 @@ import React from 'react'
 const Project = ({ project }) => {
   return (
     <li className='project'>
-      {project.project_name}
+      {project.project_name}{project.user}
     </li>
   )
 }
