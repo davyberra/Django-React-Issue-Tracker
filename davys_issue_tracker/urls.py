@@ -23,7 +23,10 @@ router.register(r'projects', views.ProjectViewSet)
 router.register(r'issues', views.IssueViewSet)
 
 urlpatterns = [
+    # React paths
     path('admin/', admin.site.urls),
+    path('api/v1/issue_tracker/', include('issue_tracker.urls')),
+
     path('issue_tracker/', include('issue_tracker.urls')),
     path('', include('issue_tracker.urls')),
     path('api/', include(router.urls)),

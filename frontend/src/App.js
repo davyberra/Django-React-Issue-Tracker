@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import Header from './Header.js';
-import Project from './Project.js';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Header from './components/Header.js';
+import Login from './views/auth/Login.js'
+import Signup from './views/auth/Signup.js'
+import Project from './components/Project.js';
 import productService from './services/ProductService.js';
 
-function App() {
+const App = () => {
   const [projects, setProjects] = useState([])
 
   useEffect(() => {
@@ -19,12 +22,14 @@ function App() {
   )
 
   return (
-    <div className="App">
-      <Header />
-
-      <ul>
-        {projects.map(project => <Project project={project}  />)}
-      </ul>
+    <div className='App'>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path='/login' component={Login} exact />
+          <Route path='/signup' component={Signup} exact />
+        </Switch>
+      </Router>
     </div>
   );
 }

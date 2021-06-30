@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import include, path
+import rest_auth
 from . import views
 
 urlpatterns = [
+    # React paths
+    path('auth/', include('rest_auth.urls')),
+    path('auth/register/', include('rest_auth.registration.urls')),
+
     path('', views.ProjectView.as_view(), name='home_url'),
     path('<int:pk>/issues/', views.IndexView.as_view(), name='issue'),
     path('get_name', views.get_name, name='get_name'),

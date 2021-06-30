@@ -1,9 +1,6 @@
 import datetime
-
-from django.db import models
 from django.contrib.auth.models import User
-
-# Create your models here.
+from django.db import models
 
 
 class Project(models.Model):
@@ -12,6 +9,7 @@ class Project(models.Model):
 
     def __str__(self):
         return self.project_name
+
 
 class Issue(models.Model):
     CRITICAL = 'Critical'
@@ -47,12 +45,6 @@ class Issue(models.Model):
     project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True)
     in_progress = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
-    # priority_mappings = {
-    #     'Critical': 'danger',how
-    #     'High': 'warning',
-    #     'Medium': 'info',
-    #     'Low': 'success',
-    # }
 
     def __str__(self):
         return self.issue_text
