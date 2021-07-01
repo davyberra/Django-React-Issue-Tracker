@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
-import signupService from '../../services/SignupService.js'
 
 const Signup = () => {
   const [username, setUsername] = useState('');

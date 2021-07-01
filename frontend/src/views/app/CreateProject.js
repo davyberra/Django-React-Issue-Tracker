@@ -1,19 +1,21 @@
-import React, { uesEffect, useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import projectService from '../../services/ProjectService.js'
 import userService from '../../services/UserService.js'
 
 const CreateProject = () => {
   const [newProject, setNewProject] = useState('')
-  const [username, setUsername] = useState('')
+  const [id, setId] = useState(null)
 
   useEffect(() => {
     if (localStorage.getItem('token') === null) {
       window.location.replace('http://localhost:3000/login')
     } else {
       userService
-        .getUsername()
-        .then(data => setUsername(data.username))
+        .getUser()
+        .then(data => {
+          console.log(data)
+          setId(data.pk)
+        })
     }
   }, [])
 
@@ -21,12 +23,14 @@ const CreateProject = () => {
     e.preventDefault()
     const projectObject = {
       project_name: newProject,
-      user: username
+      user: id
     }
 
     projectService
       .createProject(projectObject)
       .then(data => console.log(data))
+
+    window.location.replace('http://localhost:3000/dashboard')
   }
 
   const handleProjectChange = e => {

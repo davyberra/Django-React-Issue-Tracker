@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Project = ({ project }) => {
+const Project = ({ project, username }) => {
   return (
     <li className='project'>
-      {project.project_name}{project.user}
+      {project.project_name} - {project.user !== null ? `created by ${username}` : 'created by NO ONE'} - {project.id}
     </li>
   )
 }

@@ -7,10 +7,16 @@ const getAll = () => {
   return request.then(response => response.data)
 }
 
+const getAllForUser = id => {
+  const request = axios.get(BASE_URL)
+  const data = request.then(response => response.data)
+  return data.map(project => project.user === id)
+}
+
 const createProject = newProject => {
   const request = axios.post(BASE_URL, newProject)
   return request.then(response => response.data)
 }
 
-export default { getAll, createProject }
+export default { getAll, createProject, getAllForUser }
 

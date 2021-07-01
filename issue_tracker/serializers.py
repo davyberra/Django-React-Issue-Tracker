@@ -13,14 +13,9 @@ class IssueSerializer(serializers.ModelSerializer):
         model = Issue
         fields = [
             'issue_text',
-            'date_posted',
-            'date_completed',
             'priority',
             'issue_type',
-            'user',
             'project',
-            'in_progress',
-            'completed'
         ]
 
 
