@@ -18,5 +18,10 @@ const createProject = newProject => {
   return request.then(response => response.data)
 }
 
-export default { getAll, createProject, getAllForUser }
+const deleteProject = id => {
+  const request = axios.delete(`${BASE_URL}${id}/`)
+  return request
+}
+
+export default { getAll, createProject, getAllForUser, deleteProject }
 

@@ -45,13 +45,15 @@ const Login = () => {
   }
 
   return (
-    <div>
-      {loading === false && <h1>Login</h1>}
-      {errors === true && <h2>Cannot log in with provided credentials</h2>}
+    <div className='login'>
+
+      {loading === false && <h1 className='login-input'>Login</h1>}
+      {errors === true && <p className='login-input alert alert-danger'>Cannot log in with provided credentials</p>}
       {loading === false && (
-        <form onSubmit={onSubmit}>
-          <label htmlFor='username'>Username:</label> <br />
+        <form className='login-input' onSubmit={onSubmit}>
+          <label className='login-input' htmlFor='username'>Username:</label> <br />
           <input
+            className='login-input'
             name='username'
             type='username'
             value={username}
@@ -59,8 +61,9 @@ const Login = () => {
             onChange={e => setUsername(e.target.value)}
           />{' '}
           <br />
-          <label htmlFor='password'>Password:</label> <br />
+          <label className='login-input' htmlFor='password'>Password:</label> <br />
           <input
+            className='login-input'
             name='pasword'
             type='password'
             value={password}
@@ -68,9 +71,10 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input type='submit' value='Login' />
+          <input className='login-input btn btn-primary' type='submit' value='Login' />
         </form>
       )}
+      
     </div>
   )
 }

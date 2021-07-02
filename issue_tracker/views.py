@@ -20,8 +20,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
-    def retrieve(self, request, *args, **kwargs):
-        object_id = self.kwargs['pk']
+
 
 class IssueViewSet(viewsets.ModelViewSet):
 

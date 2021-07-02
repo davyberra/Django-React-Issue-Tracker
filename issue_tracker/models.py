@@ -29,7 +29,7 @@ class Issue(models.Model):
         (FEATURE, 'Feature'),
     ]
     issue_text = models.TextField()
-    date_posted = models.DateTimeField('date_posted')
+    date_posted = models.DateTimeField('date_posted', null=True)
     date_completed = models.DateTimeField('date_completed', null=True)
     priority = models.CharField(
         max_length=8,
