@@ -17,5 +17,10 @@ const deleteIssue = id => {
   return request
 }
 
-export default { getAll, createIssue, deleteIssue }
+const updateIssue = (id, updatedIssue) => {
+  const request = axios.put(`${BASE_URL}${id}/`, updatedIssue)
+  return request.then(response => response.data)
+}
+
+export default { getAll, createIssue, deleteIssue, updateIssue }
 

@@ -2,6 +2,7 @@ import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
+import datetime
 
 class Project(models.Model):
     project_name = models.CharField(max_length=30)
@@ -29,8 +30,8 @@ class Issue(models.Model):
         (FEATURE, 'Feature'),
     ]
     issue_text = models.TextField()
-    date_posted = models.DateTimeField('date_posted', null=True)
-    date_completed = models.DateTimeField('date_completed', null=True)
+    # date_posted = models.DateTimeField('date_posted', default=datetime.datetime.now)
+    # date_completed = models.DateTimeField('date_completed', null=True)
     priority = models.CharField(
         max_length=8,
         choices=PRIORITY_CHOICES,

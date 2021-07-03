@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+
 
 import projectService from '../../services/ProjectService.js'
 import userService from '../../services/UserService.js'
@@ -64,7 +64,7 @@ const Dashboard = () => {
     projectService
       .getAll()
       .then(allProjects => setProjects(allProjects))
-  }, [user, createProjectState])
+  }, [user])
 
   const toggleCreateProjectState = () => {
     setCreateProjectState(!createProjectState)
@@ -85,11 +85,12 @@ const Dashboard = () => {
 
 
   return (
-    <div className='dashboard-content'>
+    <div className='page-content'>
       {loading === false && (
         <>
           <h1 className='page-title'>Dashboard</h1>
           <h2>Hello {user.username}!</h2>
+          <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
           <table className='table table-hover'>
             <tr className='well well-sm'>
               <th>Project</th>
@@ -106,7 +107,6 @@ const Dashboard = () => {
               />
             )}
           </table>
-          <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
           {createProjectState ? <CreateProjectPopup
             toggle={toggleCreateProjectState}
             newProject={newProject}

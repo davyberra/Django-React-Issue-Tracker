@@ -20,7 +20,7 @@ class IssueSerializer(serializers.ModelSerializer):
             'priority',
             'issue_type',
             # 'date_posted',
-            'date_completed',
+            # 'date_completed',
             'in_progress',
             'completed',
         ]

@@ -13,15 +13,15 @@ const Header = () => {
   return (
     <div className='header'>
       <nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
         <Link to='/dashboard' className='navbar-brand'>Django/React Issue Tracker</Link>
         <div className='collapse navbar-collapse'>
           <div className='navbar-nav'>
             {isAuth === true ? (
               <>
-                <Link to='dashboard' className='nav-item nav-link'>Dashboard</Link>
+                <Link to='/dashboard' className='nav-item nav-link'>Dashboard</Link>
                 <Link to='/logout' className='nav-item nav-link'>Logout</Link>
               </>
             ) : (
