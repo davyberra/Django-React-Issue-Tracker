@@ -1,4 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
 const Logout = () => {
   const [loading, setLoading] = useState(true)
@@ -30,11 +31,12 @@ const Logout = () => {
   }
 
   return (
-    <div>
+    <div className='logout-content'>
       {loading === false && (
         <>
           <h1>Are you sure you want to logout?</h1>
-          <input type='button' value='Logout' onClick={handleLogout} />
+          <input className='btn btn-danger' type='button' value='Logout' onClick={handleLogout} />
+          <Link className='btn btn-secondary' to='/dashboard'>Cancel</Link>
         </>
       )}
     </div>

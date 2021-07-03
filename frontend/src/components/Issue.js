@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Issue = ({ issue, removeIssue, completeIssue }) => {
+const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
   return (
     <tr>
+      <td><strong>{issue.pk}</strong></td>
       <td>{issue.issue_text}</td>
       <td>{issue.issue_type}</td>
       <td>{issue.priority}</td>
-      <td>{issue.date_posted}</td>
       <td>
         <div className='dropdown'>
           <button
@@ -18,10 +18,10 @@ const Issue = ({ issue, removeIssue, completeIssue }) => {
           >
             {issue.in_progress === true ? 'In Progress' : 'Not Started'}
           </button>
-          <div className='dropdown-menu'>
-            <button className='dropdown-item'>In Progress</button>
-            <button className='dropdown-item'>Not Started</button>
-          </div>
+          <ul className='dropdown-menu' aria-labelledby="dropdownMenuButton1" >
+            <li><button className='dropdown-item' onClick={(() => toggleInProgress(issue.pk, true))}>In Progress</button></li>
+            <li><button className='dropdown-item' onClick={(() => toggleInProgress(issue.pk, false))}>Not Started</button></li>
+          </ul>
         </div>
       </td>
       <td>

@@ -8,6 +8,6 @@
     "\\src\\views\\app",
     "\\src\\views\\auth"
   ],
-  "SelectedNode": "\\src\\views\\app\\CreateProjectPopup.js",
+  "SelectedNode": "\\src\\components\\CompletedIssue.js",
   "PreviewInSolutionExplorer": false
 }

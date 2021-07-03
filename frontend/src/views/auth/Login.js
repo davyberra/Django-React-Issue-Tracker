@@ -47,13 +47,13 @@ const Login = () => {
   return (
     <div className='login'>
 
-      {loading === false && <h1 className='login-input'>Login</h1>}
+      {loading === false && <h1 className='login-header'>Login</h1>}
       {errors === true && <p className='login-input alert alert-danger'>Cannot log in with provided credentials</p>}
       {loading === false && (
         <form className='login-input' onSubmit={onSubmit}>
           <label className='login-input' htmlFor='username'>Username:</label> <br />
           <input
-            className='login-input'
+            className='login-input form-control'
             name='username'
             type='username'
             value={username}
@@ -63,7 +63,7 @@ const Login = () => {
           <br />
           <label className='login-input' htmlFor='password'>Password:</label> <br />
           <input
-            className='login-input'
+            className='login-input form-control'
             name='pasword'
             type='password'
             value={password}

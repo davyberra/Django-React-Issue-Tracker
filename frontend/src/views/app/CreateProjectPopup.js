@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import projectService from '../../services/ProjectService.js'
+import React from 'react'
 
 
 const CreateProjectPopup = ({ toggle, newProject, addProject, handleProjectChange }) => {
@@ -10,9 +9,15 @@ const CreateProjectPopup = ({ toggle, newProject, addProject, handleProjectChang
         <form onSubmit={addProject}>
           <span className='close' onClick={toggle}>&times;</span>
           <h2>Create a New Project</h2>
-          <input value={newProject} onChange={handleProjectChange} />
-          <input type='submit' name='submit' value='Save Project' />
-          </form>
+          <div className='row'>
+            <div className='col-9'>
+              <input className='form-control' value={newProject} onChange={handleProjectChange} />
+            </div>
+            <div className='col-3'>
+              <input className='form-control btn btn-success' type='submit' name='submit' value='Save Project' />
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   )

@@ -33,24 +33,30 @@ const CompletedIssueView = () => {
 
   return (
     <div className='page-content'>
-      <h1 className='page-title'>{projectName} - Completed Issues</h1>
+      <h1 className='page-title'>
+        {projectName}
+        <small className='text-muted'> Completed Issues</small>
+      </h1>
       <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/` }} className='btn btn-primary'>Back to Issues</Link>
       <table className='table table-hover'>
-        <tr className='well well-sm'>
-          <th>Issue</th>
-          <th>Type</th>
-          <th>Priority</th>
-          <th>Date Posted</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-        {issuesToShow.map(issue =>
-          <CompletedIssue
-            issue={issue}
-            key={issue.pk}
-            removeIssue={removeIssue}
-          />
-        )}
+        <thead>
+          <tr className='table-primary well well-sm'>
+            <th>Issue</th>
+            <th>Type</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {issuesToShow.map(issue =>
+            <CompletedIssue
+              issue={issue}
+              key={issue.pk}
+              removeIssue={removeIssue}
+            />
+          )}
+        </tbody>
       </table>
     </div>
   )

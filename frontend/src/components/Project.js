@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ const Project = ({ project, removeName, issues }) => {
   return (
     <tr>
       <td className='project'>
-        <Link to={{ pathname: `${project.user}/${project.project_name}/${project.pk}` }}><strong>{project.project_name}</strong></Link>
+        <Link to={{ pathname: `${project.user}/${project.project_name}/${project.pk}` }}>{project.project_name}</Link>
       </td>
       <td className='issue-number'>
         {projectIssues.length}

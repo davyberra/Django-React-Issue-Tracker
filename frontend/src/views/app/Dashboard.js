@@ -92,20 +92,24 @@ const Dashboard = () => {
           <h2>Hello {user.username}!</h2>
           <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
           <table className='table table-hover'>
-            <tr className='well well-sm'>
-              <th>Project</th>
-              <th># of Issues</th>
-              <th>Actions</th>
-            </tr>
-            {projectsToShow.map(project =>
-              <Project
-                project={project}
-                key={project.project_name}
-                username={user.username}
-                removeName={removeName}
-                issues={issues}
-              />
-            )}
+            <thead>
+              <tr className='table-primary well well-sm'>
+                <th>Project</th>
+                <th># of Issues</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {projectsToShow.map(project =>
+                <Project
+                  project={project}
+                  key={project.project_name}
+                  username={user.username}
+                  removeName={removeName}
+                  issues={issues}
+                />
+              )}
+            </tbody>
           </table>
           {createProjectState ? <CreateProjectPopup
             toggle={toggleCreateProjectState}

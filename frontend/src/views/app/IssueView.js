@@ -85,16 +85,16 @@ const IssueView = () => {
     )
   }
 
-  const toggleInProgress = id => {
+  const toggleInProgress = (id, newState) => {
     const issue = issuesToShow.find(i => i.pk === id)
-    const changedIssue = { ...issue, in_progress: !issue.in_progress }
+    const changedIssue = { ...issue, in_progress: newState }
 
     issueService
       .updateIssue(id, changedIssue)
       .then(returnedIssue => {
-        setIssues(issues.map(issue => issue.id !== id ? issue : returnedIssue))
+        setIssues(issues.map(issue => issue.pk !== id ? issue : returnedIssue))
       }
-    )
+      )
   }
 
   const toggleCreateIssueState = () => {
@@ -108,24 +108,28 @@ const IssueView = () => {
       <h1 className='page-title'>{projectName}</h1>
       <button className='btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
       <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='btn btn-primary'>View Completed Issues</Link>
-        <table className='table table-hover'>
-        <tr className='well well-sm'>
-          <th>Issue</th>
-          <th>Type</th>
-          <th>Priority</th>
-          <th>Date Posted</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-        {issuesToShow.map(issue =>
-          <Issue
-            issue={issue}
-            key={issue.pk}
-            toggleInProgress={toggleInProgress}
-            removeIssue={removeIssue}
-            completeIssue={completeIssue}
-          />
-        )}
+      <table className='table table-hover'>
+        <thead>
+          <tr className='table-primary well well-sm'>
+            <th>#</th>
+            <th>Issue</th>
+            <th>Type</th>
+            <th data-sortable='true'>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {issuesToShow.map(issue =>
+            <Issue
+              issue={issue}
+              key={issue.pk}
+              removeIssue={removeIssue}
+              completeIssue={completeIssue}
+              toggleInProgress={toggleInProgress}
+            />
+          )}
+        </tbody>
       </table>
       {createIssueState ? <CreateIssue
         toggle={toggleCreateIssueState}

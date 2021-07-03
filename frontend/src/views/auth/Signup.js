@@ -49,12 +49,13 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      {loading === false && <h1>Signup</h1>}
+    <div className='login'>
+      {loading === false && <h1 className='login-header'>Signup</h1>}
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
+      <form className='login-input' onSubmit={onSubmit}>
         <label htmlFor='username'>Username:</label> <br />
         <input
+          className='login-input form-control'
           name='username'
           type='username'
           value={username}
@@ -64,6 +65,7 @@ const Signup = () => {
         <br />
         <label htmlFor='password1'>Password:</label> <br />
         <input
+          className='login-input form-control'
           name='password1'
           type='password'
           value={password1}
@@ -73,6 +75,7 @@ const Signup = () => {
         <br />
         <label htmlFor='password2'>Confirm password:</label> <br />
         <input
+          className='login-input form-control'
           name='password2'
           type='password'
           value={password2}
@@ -80,7 +83,7 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <input type='submit' value='Signup' />
+        <input className='btn btn-primary login-input' type='submit' value='Signup' />
       </form>
     </div>
   );
