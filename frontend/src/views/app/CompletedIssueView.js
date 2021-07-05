@@ -44,6 +44,8 @@ const CompletedIssueView = () => {
             <th>Issue</th>
             <th>Type</th>
             <th>Priority</th>
+            <th>Date Posted</th>
+            <th>Date Completed</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>

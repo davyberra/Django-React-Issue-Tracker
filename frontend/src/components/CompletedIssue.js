@@ -6,6 +6,8 @@ const Issue = ({ issue, removeIssue }) => {
       <td>{issue.issue_text}</td>
       <td>{issue.issue_type}</td>
       <td>{issue.priority}</td>
+      <td>{issue.date_posted}</td>
+      <td>{issue.date_completed}</td>
       <td className='table-success'>
         Complete
       </td>

@@ -10,6 +10,10 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class IssueSerializer(serializers.ModelSerializer):
+
+    date_posted = serializers.DateTimeField(format="%m/%d/%Y %I:%M %p")
+    date_completed = serializers.DateTimeField(format="%m/%d/%Y %I:%M %p", allow_null=True)
+
     class Meta:
         model = Issue
         fields = [
@@ -19,8 +23,8 @@ class IssueSerializer(serializers.ModelSerializer):
             'project',
             'priority',
             'issue_type',
-            # 'date_posted',
-            # 'date_completed',
+            'date_posted',
+            'date_completed',
             'in_progress',
             'completed',
         ]

@@ -44,6 +44,7 @@ const IssueView = () => {
       project: projectId,
       priority: priority,
       issue_type: type,
+      date_posted: new Date(),
       date_completed: null,
       in_progress: false,
       completed: false
@@ -115,6 +116,7 @@ const IssueView = () => {
             <th>Issue</th>
             <th>Type</th>
             <th data-sortable='true'>Priority</th>
+            <th>Date Posted</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>

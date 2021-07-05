@@ -7,6 +7,7 @@ const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
       <td>{issue.issue_text}</td>
       <td>{issue.issue_type}</td>
       <td>{issue.priority}</td>
+      <td>{issue.date_posted}</td>
       <td>
         <div className='dropdown'>
           <button
