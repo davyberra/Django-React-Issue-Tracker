@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
@@ -49,7 +50,7 @@ const IssueView = () => {
       in_progress: false,
       completed: false
     }
-
+    console.log(issueObject)
     issueService
       .createIssue(issueObject)
       .then(returnedIssue => {
@@ -72,12 +73,16 @@ const IssueView = () => {
 
   const completeIssue = id => {
     const issue = issuesToShow.find(i => i.pk === id)
+    const parsedDate = moment(issue.date_posted)
     const changedIssue = {
       ...issue,
       completed: true,
+      date_posted: parsedDate,
       date_completed: new Date()
     }
 
+    
+    console.log(parsedDate._d)
     issueService
       .updateIssue(id, changedIssue)
       .then(returnedIssue => {
@@ -88,7 +93,12 @@ const IssueView = () => {
 
   const toggleInProgress = (id, newState) => {
     const issue = issuesToShow.find(i => i.pk === id)
-    const changedIssue = { ...issue, in_progress: newState }
+    const parsedDate = moment(issue.date_posted)
+    const changedIssue = {
+      ...issue,
+      date_posted: parsedDate,
+      in_progress: newState
+    }
 
     issueService
       .updateIssue(id, changedIssue)
@@ -109,30 +119,50 @@ const IssueView = () => {
       <h1 className='page-title'>{projectName}</h1>
       <button className='btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
       <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='btn btn-primary'>View Completed Issues</Link>
-      <table className='table table-hover'>
-        <thead>
-          <tr className='table-primary well well-sm'>
-            <th>#</th>
-            <th>Issue</th>
-            <th>Type</th>
-            <th data-sortable='true'>Priority</th>
-            <th>Date Posted</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {issuesToShow.map(issue =>
-            <Issue
-              issue={issue}
-              key={issue.pk}
-              removeIssue={removeIssue}
-              completeIssue={completeIssue}
-              toggleInProgress={toggleInProgress}
-            />
-          )}
-        </tbody>
-      </table>
+      {issuesToShow.length > 0 ? (
+        <table className='table table-hover'>
+          <thead>
+            <tr className='table-primary well well-sm'>
+              <th>#</th>
+              <th>Issue</th>
+              <th>Type</th>
+              <th data-sortable='true'>Priority</th>
+              <th>Date Posted</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            {issuesToShow.map(issue =>
+              <Issue
+                issue={issue}
+                key={issue.pk}
+                removeIssue={removeIssue}
+                completeIssue={completeIssue}
+                toggleInProgress={toggleInProgress}
+              />
+            )}
+          </tbody>
+        </table>
+      ) : (
+          <>
+          <table className='table table-hover'>
+            <thead>
+              <tr className='table-primary well well-sm'>
+                <th>#</th>
+                <th>Issue</th>
+                <th>Type</th>
+                <th data-sortable='true'>Priority</th>
+                <th>Date Posted</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+          </table>
+          <p>No issues yet to show. Create a new issue by clicking the 'New Issue' button above!</p>
+          </>
+        )}
       {createIssueState ? <CreateIssue
         toggle={toggleCreateIssueState}
         newIssue={newIssue}
