@@ -17,7 +17,7 @@ const Header = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <Link to='/dashboard' className='navbar-brand'>Django/React Issue Tracker</Link>
-        <div className='collapse navbar-collapse'>
+        <div id='navbarNav' className='collapse navbar-collapse'>
           <div className='navbar-nav'>
             {isAuth === true ? (
               <>

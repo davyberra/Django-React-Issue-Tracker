@@ -2,7 +2,7 @@ import dj_database_url
 from davys_issue_tracker.settings import *
 
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = [

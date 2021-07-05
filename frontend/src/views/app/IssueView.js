@@ -50,7 +50,7 @@ const IssueView = () => {
       in_progress: false,
       completed: false
     }
-    console.log(issueObject)
+
     issueService
       .createIssue(issueObject)
       .then(returnedIssue => {
@@ -81,8 +81,6 @@ const IssueView = () => {
       date_completed: new Date()
     }
 
-    
-    console.log(parsedDate._d)
     issueService
       .updateIssue(id, changedIssue)
       .then(returnedIssue => {

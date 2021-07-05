@@ -52,7 +52,6 @@ const Dashboard = () => {
       userService
         .getUser()
         .then(curUser => {
-          console.log(curUser)
           setUser(curUser)
           setLoading(false)
         })
@@ -60,7 +59,6 @@ const Dashboard = () => {
   }, [])
 
   useEffect(() => {
-    console.log(user)
     projectService
       .getAll()
       .then(allProjects => setProjects(allProjects))

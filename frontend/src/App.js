@@ -9,6 +9,11 @@ import Dashboard from './views/app/Dashboard.js'
 import IssueView from './views/app/IssueView.js'
 import CompletedIssueView from './views/app/CompletedIssueView';
 
+import axios from 'axios'
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+
 
 const App = () => {
 
