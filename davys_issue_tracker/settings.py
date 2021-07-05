@@ -87,7 +87,7 @@ CORS_ORIGIN_WHITELIST = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR / 'frontend/build')],
+        'DIRS': [os.path.join(BASE_DIR / 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,11 +134,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
+    os.path.join(BASE_DIR, 'build/static')
 ]
 
 LOGIN_URL = '/accounts/login/'
