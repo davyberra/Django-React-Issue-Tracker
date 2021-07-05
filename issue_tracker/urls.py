@@ -1,6 +1,4 @@
 from django.urls import include, path
-import rest_auth
-from . import views
 
 urlpatterns = [
     # React paths

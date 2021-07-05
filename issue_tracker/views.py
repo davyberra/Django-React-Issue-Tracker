@@ -1,15 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
-from django.views import generic
-from django.utils import timezone
-
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets
 from .serializers import ProjectSerializer, IssueSerializer
 
 from .models import Issue, Project
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
