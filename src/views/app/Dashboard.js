@@ -46,16 +46,16 @@ const Dashboard = () => {
   }, [])
     
   useEffect(() => {
-    if (localStorage.getItem('token') === null) {
-      window.location.replace('/login')
-    } else {
+    //if (localStorage.getItem('token') === null) {
+    //  window.location.replace('/login')
+    //} else {
       userService
         .getUser()
         .then(curUser => {
           setUser(curUser)
           setLoading(false)
         })
-    }
+    
   }, [])
 
   useEffect(() => {
