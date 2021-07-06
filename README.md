@@ -14,7 +14,7 @@ Created using Django, React, Bootstrap, and deployed on Heroku.
 ![Login Page](https://imgur.com/Tz50MeR.jpg)
 
 The app will first ask you to login with your credentials. To get set up with your own
-account, click 'Signup' in the navigation bar at the top of the page. You will be taken to a screen like below,
+account, click 'Signup' in the navigation bar at the top of the page. You will be taken to a screen as shown below
 where you can signup with a username and password.
 
 ![Signup Page](https://imgur.com/lxOvme0.jpg)
@@ -22,11 +22,11 @@ where you can signup with a username and password.
 ![Project View](https://imgur.com/IwEq9pD.jpg)
 
 After signing up, you should be taken to the dashboard screen where you can view and create new projects.
-Clicking the 'New Project' button will pop up a window for you to type in hte name of your new project.
+Clicking the 'New Project' button will pop up a window for you to type in the name of your project.
 
 ![New Project](https://imgur.com/Uxxy1MW.jpg)
 
-After clicking 'Save Project', your new project should appear on your dashboard.
+After clicking 'Save Project' your new project should appear on your dashboard.
 
 ![Test Project](https://imgur.com/wkQd8h3.jpg)
 ###Creating/Modifying Issues
