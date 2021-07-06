@@ -1,12 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src\\components",
-    "\\src\\services",
-    "\\src\\views",
-    "\\src\\views\\app",
-    "\\src\\views\\auth"
+    ""
   ],
-  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }

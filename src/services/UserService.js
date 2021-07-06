@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'http://127.0.0.1:8000/api/v1/issue_tracker/auth/user/'
+const BASE_URL = '/api/v1/issue_tracker/auth/user/'
 
 const config = {
   headers: {
