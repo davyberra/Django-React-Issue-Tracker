@@ -36,7 +36,7 @@ You can add as many issues as you want, and toggle their status with the dropdow
 ![In Progress](https://imgur.com/5SSJgho)
 You can mark an issue as complete when it is finished, moving it to the Completed Issues view which can be accessed by
 clicking the 'View Completed Issues' button.
-![Completed Issues](https://imgur.com/o4lGPWW)
+![Completed Issues](https://imgur.com/BhfcA7v)
 If you wish to delete an issue permanently, simply click the 'delete' button. A confirmation will popup ensuring that you 
 truly wish to delete the issue, and clicking OK will delete it permanently.
 ### Logging out
