@@ -6,10 +6,11 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      <Redirect to='/dashboard' />
+      setRedirect(true)
     } else {
       setLoading(false)
     }
@@ -35,7 +36,7 @@ const Login = () => {
         if (data.key) {
           localStorage.clear()
           localStorage.setItem('token', data.key);
-          <Redirect to='/dashboard' />
+          setRedirect(true)
         } else {
           setUsername('')
           setPassword('')
@@ -43,6 +44,10 @@ const Login = () => {
           setErrors(true)
         }
       })
+  }
+
+  if (redirect) {
+    return <Redirect to='/dashboard' />
   }
 
   return (
