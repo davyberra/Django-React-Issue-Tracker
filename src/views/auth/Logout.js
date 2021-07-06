@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, Redirect } from 'react-router-dom';
+import Header from '../../components/Header.js'
 
 const Logout = () => {
   const [loading, setLoading] = useState(true)
@@ -33,16 +34,19 @@ const Logout = () => {
 
   return (redirect === true ? (
     <Redirect to='/login' />
-    ) : (
-      <div className='logout-content'>
-        {loading === false && (
-          <>
-            <h1>Are you sure you want to logout?</h1>
-            <input className='btn btn-danger' type='button' value='Logout' onClick={handleLogout} />
-            <Link className='btn btn-secondary' to='/dashboard'>Cancel</Link>
-          </>
-        )}
-      </div>
+  ) : (
+      <>
+        <Header />
+        <div className='logout-content'>
+          {loading === false && (
+            <>
+              <h1>Are you sure you want to logout?</h1>
+              <input className='btn btn-danger' type='button' value='Logout' onClick={handleLogout} />
+              <Link className='btn btn-secondary' to='/dashboard'>Cancel</Link>
+            </>
+          )}
+        </div>
+      </>
     )
   )
 }

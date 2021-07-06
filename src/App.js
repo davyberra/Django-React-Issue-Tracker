@@ -20,7 +20,6 @@ const App = () => {
   return (
     <div className='App'>
       <Router>
-        <Header />
         <Switch>
           <Route path='/' component={Dashboard} exact />
           <Route path='/login' component={Login} exact />

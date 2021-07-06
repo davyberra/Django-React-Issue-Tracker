@@ -1,6 +1,7 @@
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { Link, Redirect, useParams } from 'react-router-dom'
+import Header from '../../components/Header.js'
 
 import Issue from '../../components/Issue.js'
 import CreateIssue from './CreateIssue.js'
@@ -119,39 +120,14 @@ const IssueView = () => {
 
   return (redirect === true ? (
     <Redirect to='/login' />
-    ) : (
-      <div className='page-content'>
-        <h1 className='page-title'>{projectName}</h1>
-        <button className='btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
-        <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='btn btn-primary'>View Completed Issues</Link>
-        {issuesToShow.length > 0 ? (
-          <table className='table table-hover'>
-            <thead>
-              <tr className='table-primary well well-sm'>
-                <th>#</th>
-                <th>Issue</th>
-                <th>Type</th>
-                <th data-sortable='true'>Priority</th>
-                <th>Date Posted</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-        
-            <tbody>
-              {issuesToShow.map(issue =>
-                <Issue
-                  issue={issue}
-                  key={issue.pk}
-                  removeIssue={removeIssue}
-                  completeIssue={completeIssue}
-                  toggleInProgress={toggleInProgress}
-                />
-              )}
-            </tbody>
-          </table>
-        ) : (
-            <>
+  ) : (
+      <>
+        <Header />
+        <div className='page-content'>
+          <h1 className='page-title'>{projectName}</h1>
+          <button className='btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
+          <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='btn btn-primary'>View Completed Issues</Link>
+          {issuesToShow.length > 0 ? (
             <table className='table table-hover'>
               <thead>
                 <tr className='table-primary well well-sm'>
@@ -164,20 +140,48 @@ const IssueView = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
+        
+              <tbody>
+                {issuesToShow.map(issue =>
+                  <Issue
+                    issue={issue}
+                    key={issue.pk}
+                    removeIssue={removeIssue}
+                    completeIssue={completeIssue}
+                    toggleInProgress={toggleInProgress}
+                  />
+                )}
+              </tbody>
             </table>
-            <p>No issues yet to show. Create a new issue by clicking the 'New Issue' button above!</p>
-            </>
-          )}
-        {createIssueState ? <CreateIssue
-          toggle={toggleCreateIssueState}
-          newIssue={newIssue}
-          type={type}
-          priority={priority}
-          addIssue={addIssue}
-          handleIssueChange={handleIssueChange}
-          handlePriorityChange={handlePriorityChange}
-          handleTypeChange={handleTypeChange} /> : null}
-      </div>
+          ) : (
+              <>
+              <table className='table table-hover'>
+                <thead>
+                  <tr className='table-primary well well-sm'>
+                    <th>#</th>
+                    <th>Issue</th>
+                    <th>Type</th>
+                    <th data-sortable='true'>Priority</th>
+                    <th>Date Posted</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+              </table>
+              <p>No issues yet to show. Create a new issue by clicking the 'New Issue' button above!</p>
+              </>
+            )}
+          {createIssueState ? <CreateIssue
+            toggle={toggleCreateIssueState}
+            newIssue={newIssue}
+            type={type}
+            priority={priority}
+            addIssue={addIssue}
+            handleIssueChange={handleIssueChange}
+            handlePriorityChange={handlePriorityChange}
+            handleTypeChange={handleTypeChange} /> : null}
+          </div>
+      </>
     )
   )
 }

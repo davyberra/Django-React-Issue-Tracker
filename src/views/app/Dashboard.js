@@ -6,6 +6,7 @@ import userService from '../../services/UserService.js'
 import issueService from '../../services/IssueService.js'
 import Project from '../../components/Project.js'
 import CreateProjectPopup from './CreateProjectPopup.js'
+import Header from '../../components/Header.js'
 
 
 const Dashboard = () => {
@@ -50,6 +51,7 @@ const Dashboard = () => {
     if (localStorage.getItem('token') === null) {
       setRedirect(true)
     } else {
+      console.log(localStorage.getItem('token'))
       userService
         .getUser()
         .then(curUser => {
@@ -85,41 +87,44 @@ const Dashboard = () => {
 
   return (redirect === true ? (
     <Redirect to='login' />
-    ) : (
-      <div className='page-content'>
-        {loading === false && (
-          <>
-            <h1 className='page-title'>Dashboard</h1>
-            <h2>Hello {user.username}!</h2>
-            <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
-            <table className='table table-hover'>
-              <thead>
-                <tr className='table-primary well well-sm'>
-                  <th>Project</th>
-                  <th># of Issues</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {projectsToShow.map(project =>
-                  <Project
-                    project={project}
-                    key={project.project_name}
-                    username={user.username}
-                    removeName={removeName}
-                    issues={issues}
-                  />
-                )}
-              </tbody>
-            </table>
-            {createProjectState ? <CreateProjectPopup
-              toggle={toggleCreateProjectState}
-              newProject={newProject}
-              addProject={addProject}
-              handleProjectChange={handleProjectChange} /> : null}
-          </>
-        )}
-      </div>
+  ) : (
+      <>
+        <Header />
+        <div className='page-content'>
+          {loading === false && (
+            <>
+              <h1 className='page-title'>Dashboard</h1>
+              <h2>Hello {user.username}!</h2>
+              <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
+              <table className='table table-hover'>
+                <thead>
+                  <tr className='table-primary well well-sm'>
+                    <th>Project</th>
+                    <th># of Issues</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {projectsToShow.map(project =>
+                    <Project
+                      project={project}
+                      key={project.project_name}
+                      username={user.username}
+                      removeName={removeName}
+                      issues={issues}
+                    />
+                  )}
+                </tbody>
+              </table>
+              {createProjectState ? <CreateProjectPopup
+                toggle={toggleCreateProjectState}
+                newProject={newProject}
+                addProject={addProject}
+                handleProjectChange={handleProjectChange} /> : null}
+            </>
+          )}
+        </div>
+      </>
     )
   )
 }
