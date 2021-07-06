@@ -47,7 +47,7 @@ const Dashboard = () => {
     
   useEffect(() => {
     if (localStorage.getItem('token') === null) {
-      window.location.replace('http://localhost:3000/login')
+      window.location.replace('/login')
     } else {
       userService
         .getUser()

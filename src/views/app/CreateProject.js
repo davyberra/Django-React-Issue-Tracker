@@ -8,7 +8,7 @@ const CreateProject = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token') === null) {
-      window.location.replace('http://localhost:3000/login')
+      window.location.replace('/login')
     } else {
       userService
         .getUser()
@@ -30,7 +30,7 @@ const CreateProject = () => {
       .createProject(projectObject)
       .then(data => console.log(data))
 
-    window.location.replace('http://localhost:3000/dashboard')
+    window.location.replace('/dashboard')
   }
 
   const handleProjectChange = e => {
