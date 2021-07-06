@@ -29,7 +29,7 @@ Clicking the 'New Project' button will pop up a window for you to type in the na
 After clicking 'Save Project' your new project should appear on your dashboard.
 
 ![Test Project](https://imgur.com/wkQd8h3.jpg)
-###Creating/Modifying Issues
+### Creating/Modifying Issues
 Now that you have a new project set up, go ahead and click on the name of the project to be taken to the Issues Dashboard.
 
 ![Issue View](https://imgur.com/IwEq9pD.jpg)
