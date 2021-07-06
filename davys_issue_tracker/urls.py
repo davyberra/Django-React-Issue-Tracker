@@ -17,6 +17,7 @@ from django.contrib import admin
 from rest_framework import routers
 from issue_tracker import views
 from django.urls import include, path
+from issue_tracker.views import index
 
 router = routers.DefaultRouter()
 router.register(r'projects', views.ProjectViewSet)
@@ -24,6 +25,7 @@ router.register(r'issues', views.IssueViewSet)
 
 urlpatterns = [
     # React paths
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('api/v1/issue_tracker/', include('issue_tracker.urls')),
 
