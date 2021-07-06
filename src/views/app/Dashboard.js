@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import { Redirect } from 'react-router-dom'
 
 import projectService from '../../services/ProjectService.js'
 import userService from '../../services/UserService.js'
@@ -46,16 +46,16 @@ const Dashboard = () => {
   }, [])
     
   useEffect(() => {
-    //if (localStorage.getItem('token') === null) {
-    //  window.location.replace('/login')
-    //} else {
+    if (localStorage.getItem('token') === null) {
+      <Redirect to='login' />
+    } else {
       userService
         .getUser()
         .then(curUser => {
           setUser(curUser)
           setLoading(false)
         })
-    
+    }
   }, [])
 
   useEffect(() => {

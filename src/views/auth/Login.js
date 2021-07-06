@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -8,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('/dashboard')
+      <Redirect to='/dashboard' />
     } else {
       setLoading(false)
     }
@@ -33,8 +34,8 @@ const Login = () => {
       .then(data => {
         if (data.key) {
           localStorage.clear()
-          localStorage.setItem('token', data.key)
-          window.location.replace('/dashboard')
+          localStorage.setItem('token', data.key);
+          <Redirect to='/dashboard' />
         } else {
           setUsername('')
           setPassword('')

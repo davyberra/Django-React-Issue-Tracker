@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const Logout = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (localStorage.getItem('token') === null) {
-      window.location.replace('/login')
+      <Redirect to='/login' />
     } else {
       setLoading(false)
     }
@@ -25,8 +25,8 @@ const Logout = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        localStorage.clear()
-        window.location.replace('/login')
+        localStorage.clear();
+          <Redirect to='/login' />
       })
   }
 
