@@ -3,10 +3,11 @@ import { Link, Redirect } from 'react-router-dom';
 
 const Logout = () => {
   const [loading, setLoading] = useState(true)
+  const [redirect, setRedirect] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('token') === null) {
-      <Redirect to='/login' />
+      setRedirect(true)
     } else {
       setLoading(false)
     }
@@ -25,21 +26,24 @@ const Logout = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
-        localStorage.clear();
-          <Redirect to='/login' />
+        localStorage.clear()
+        setRedirect(true)
       })
   }
 
-  return (
-    <div className='logout-content'>
-      {loading === false && (
-        <>
-          <h1>Are you sure you want to logout?</h1>
-          <input className='btn btn-danger' type='button' value='Logout' onClick={handleLogout} />
-          <Link className='btn btn-secondary' to='/dashboard'>Cancel</Link>
-        </>
-      )}
-    </div>
+  return (redirect === true ? (
+    <Redirect to='/login' />
+    ) : (
+      <div className='logout-content'>
+        {loading === false && (
+          <>
+            <h1>Are you sure you want to logout?</h1>
+            <input className='btn btn-danger' type='button' value='Logout' onClick={handleLogout} />
+            <Link className='btn btn-secondary' to='/dashboard'>Cancel</Link>
+          </>
+        )}
+      </div>
+    )
   )
 }
 
