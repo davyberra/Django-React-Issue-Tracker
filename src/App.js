@@ -21,13 +21,13 @@ const App = () => {
     <div className='App'>
       <Router>
         <Switch>
-          <Route path='/' component={Dashboard} exact />
+          <Route path='/:userId/:projectName/:projectId/completed' component={CompletedIssueView} exact />
+          <Route path='/:userId/:projectName/:projectId' component={IssueView} exact />
           <Route path='/login' component={Login} exact />
           <Route path='/signup' component={Signup} exact />
           <Route path='/logout' component={Logout} exact />
           <Route path='/dashboard' component={Dashboard} exact />
-          <Route path='/:userId/:projectName/:projectId' component={IssueView} exact />
-          <Route path='/:userId/:projectName/:projectId/completed' component={CompletedIssueView} exact />
+          <Route path='/' component={Dashboard} exact />
         </Switch>
       </Router>
     </div>
