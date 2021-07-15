@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from rest_framework import routers
 from issue_tracker import views
-from django.urls import include, path
+from django.urls import include, path, re_path
 from issue_tracker.views import index
 
 router = routers.DefaultRouter()
@@ -33,5 +33,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 
-    path('*', index, name='index'),
+    re_path(r'.*', index, name='index'),
 ]
