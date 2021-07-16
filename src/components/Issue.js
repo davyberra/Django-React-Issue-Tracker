@@ -8,7 +8,7 @@ const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
       <td className="d-none d-sm-table-cell">{issue.issue_type}</td>
       <td className="d-none d-sm-table-cell">{issue.priority}</td>
       <td className="d-none d-md-table-cell">{issue.date_posted}</td>
-      <td className="issue-status">
+      <td className="issue-actions">
         <div className='dropdown'>
           <button
             type='button'
@@ -24,9 +24,7 @@ const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
             <li><button className='dropdown-item' onClick={(() => toggleInProgress(issue.pk, false))}>Not Started</button></li>
           </ul>
         </div>
-      </td>
-      <td className="issue-actions">
-        <button className='btn btn-success' onClick={(() => completeIssue(issue.pk))}>Mark Complete</button>
+        <button className='btn btn-success' onClick={(() => completeIssue(issue.pk))}>Completed</button>
         <button className='btn btn-danger' onClick={(() => removeIssue(issue.pk))}>Delete</button>
       </td>
     </tr>

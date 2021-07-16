@@ -136,7 +136,6 @@ const IssueView = () => {
                   <th className="d-none d-sm-table-cell">Type</th>
                   <th className="d-none d-sm-table-cell" data-sortable='true'>Priority</th>
                   <th className="d-none d-md-table-cell">Date Posted</th>
-                  <th className="issue-status">Status</th>
                   <th className="issue-actions">Actions</th>
                 </tr>
               </thead>
