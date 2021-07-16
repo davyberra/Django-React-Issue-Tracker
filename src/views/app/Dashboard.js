@@ -94,7 +94,7 @@ const Dashboard = () => {
           {loading === false && (
             <>
               <h1 className='page-title'>Dashboard</h1>
-              <h2>Hello {user.username}!</h2>
+              <h2 className='hello-username'>Hello {user.username}!</h2>
               <button className='btn btn-primary' onClick={toggleCreateProjectState}>New Project</button>
               <table className='table table-hover'>
                 <thead>

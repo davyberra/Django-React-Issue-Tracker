@@ -4,11 +4,11 @@ const Issue = ({ issue, removeIssue }) => {
   return (
     <tr>
       <td>{issue.issue_text}</td>
-      <td>{issue.issue_type}</td>
-      <td>{issue.priority}</td>
-      <td>{issue.date_posted}</td>
-      <td>{issue.date_completed}</td>
-      <td className='table-success'>
+      <td className="d-none d-sm-table-cell">{issue.issue_type}</td>
+      <td className="d-none d-sm-table-cell">{issue.priority}</td>
+      <td className="d-none d-md-table-cell">{issue.date_posted}</td>
+      <td className="d-none d-md-table-cell">{issue.date_completed}</td>
+      <td className='d-none d-sm-table-cell table-success'>
         Complete
       </td>
       <td>

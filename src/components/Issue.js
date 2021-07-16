@@ -3,12 +3,12 @@ import React from 'react'
 const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
   return (
     <tr>
-      <td><strong>{issue.pk}</strong></td>
-      <td>{issue.issue_text}</td>
-      <td>{issue.issue_type}</td>
-      <td>{issue.priority}</td>
-      <td>{issue.date_posted}</td>
-      <td>
+      <td className="d-none d-sm-table-cell"><strong>{issue.pk}</strong></td>
+      <td className="issue-text">{issue.issue_text}</td>
+      <td className="d-none d-sm-table-cell">{issue.issue_type}</td>
+      <td className="d-none d-sm-table-cell">{issue.priority}</td>
+      <td className="d-none d-md-table-cell">{issue.date_posted}</td>
+      <td className="issue-status">
         <div className='dropdown'>
           <button
             type='button'
@@ -25,7 +25,7 @@ const Issue = ({ issue, removeIssue, completeIssue, toggleInProgress }) => {
           </ul>
         </div>
       </td>
-      <td>
+      <td className="issue-actions">
         <button className='btn btn-success' onClick={(() => completeIssue(issue.pk))}>Mark Complete</button>
         <button className='btn btn-danger' onClick={(() => removeIssue(issue.pk))}>Delete</button>
       </td>

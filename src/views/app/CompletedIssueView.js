@@ -45,11 +45,11 @@ const CompletedIssueView = () => {
           <thead>
             <tr className='table-primary well well-sm'>
               <th>Issue</th>
-              <th>Type</th>
-              <th>Priority</th>
-              <th>Date Posted</th>
-              <th>Date Completed</th>
-              <th>Status</th>
+              <th className="d-none d-sm-table-cell">Type</th>
+              <th className="d-none d-sm-table-cell">Priority</th>
+              <th className="d-none d-md-table-cell">Date Posted</th>
+              <th className="d-none d-md-table-cell">Date Completed</th>
+              <th className="d-none d-sm-table-cell">Status</th>
               <th>Actions</th>
             </tr>
           </thead>

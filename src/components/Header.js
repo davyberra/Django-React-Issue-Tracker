@@ -21,7 +21,7 @@ const Header = () => {
           <div className='navbar-nav'>
             {isAuth === true ? (
               <>
-                <Link to='/dashboard' className='nav-item nav-link'>Dashboard</Link>
+                <Link to='/dashboard' className='nav-item nav-link'>Project Dashboard</Link>
                 <Link to='/logout' className='nav-item nav-link'>Logout</Link>
               </>
             ) : (

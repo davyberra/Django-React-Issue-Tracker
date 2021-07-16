@@ -1,7 +1,7 @@
 /*@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';*/
 
 .btn {
-    margin: 10px;
+    margin: 2px;
 }
 
 .project {
@@ -13,7 +13,7 @@
 }
 
 .page-content {
-    padding: 100px;
+    padding: 15px;
 }
 
 .header {
@@ -56,9 +56,14 @@
 }
 
 .page-title {
-    text-align: left;
-    padding: 0px;
-    font-size: 80px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.hello-username {
+    text-align: center;
+    font-size: 20px;
+    color: darkcyan;
 }
 
 .modal {
@@ -77,22 +82,28 @@
     background-color: white;
     /*position: absolute;*/
     margin: 15% auto;
-    width: 900px;
+    width: 100%;
     padding: 20px;
     border-radius: 10px;
 }
-.login {
+
+/*.login {
     margin: 10% auto;
     width: 50%;
     padding: 20px;
     border: 3px solid black;
     border-color: cornflowerblue;
+}*/
+
+.login {
+    margin: 10% auto;
 }
 
 .login-content {
     margin: auto;
-    width: 50%;
-    padding: 20px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
 }
 
 .login-header {
@@ -104,9 +115,14 @@
 
 .login-input {
     margin: auto;
-    width: 50%;
     text-align: center;
+    padding: 10px 40px;
 }
+
+.completed-issues-btn {
+
+}
+
 
 .logout-content {
     text-align: center;
@@ -115,4 +131,51 @@
 
 .issue-number {
     text-align: left;
+}
+
+.issue-id {
+    display: table-cell;
+}
+
+.create-issue-input {
+    padding: 5px;
+}
+
+@media (min-width: 576px) {
+    .login-content {
+        width: 576px;
+    }
+
+    .login-input {
+        width: 100%;
+    }
+
+    .page-title {
+        font-size: 70px;
+        text-align: left;
+    }
+
+    .hello-username {
+        font-size: 30px;
+    }
+
+    .page-content {
+        padding: 100px;
+    }
+
+    .issue-id {
+        display: table-cell;
+    }
+
+    .btn {
+        margin: 10px;
+    }
+
+    .modal_content {
+        width: 576px;
+    }
+
+    .create-issue-input {
+        padding: 15px;
+    }
 }

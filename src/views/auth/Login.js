@@ -54,33 +54,39 @@ const Login = () => {
   ) : (
       <>
         <Header />
-        <div className='login'>
+        <div className='login container-sm'>
 
           {loading === false && <h1 className='login-header'>Login</h1>}
           {errors === true && <p className='login-input alert alert-danger'>Cannot log in with provided credentials</p>}
           {loading === false && (
-            <form className='login-input' onSubmit={onSubmit}>
+            <form className='login-content' onSubmit={onSubmit}>
               <label className='login-input' htmlFor='username'>Username:</label> <br />
-              <input
-                className='login-input form-control'
-                name='username'
-                type='username'
-                value={username}
-                required
-                onChange={e => setUsername(e.target.value)}
-              />{' '}
-              <br />
-              <label className='login-input' htmlFor='password'>Password:</label> <br />
-              <input
-                className='login-input form-control'
-                name='pasword'
-                type='password'
-                value={password}
-                required
-                onChange={e => setPassword(e.target.value)}
-              />{' '}
-              <br />
-              <input className='login-input btn btn-primary' type='submit' value='Login' />
+              <div className="row login-input">
+                <input
+                  className='login-input form-control'
+                  name='username'
+                  type='username'
+                  value={username}
+                  required
+                  onChange={e => setUsername(e.target.value)}
+                />{' '}
+                <br />
+              </div>
+              <div className="row login-input">
+                <label className='login-input' htmlFor='password'>Password:</label> <br />
+                <input
+                  className='login-input form-control'
+                  name='pasword'
+                  type='password'
+                  value={password}
+                  required
+                  onChange={e => setPassword(e.target.value)}
+                />{' '}
+                <br />
+              </div>
+              <div className="row login-input">
+                <input className='login-input btn btn-primary' type='submit' value='Login' />
+              </div>
             </form>
           )}
       

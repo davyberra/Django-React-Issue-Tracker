@@ -125,19 +125,19 @@ const IssueView = () => {
         <Header />
         <div className='page-content'>
           <h1 className='page-title'>{projectName}</h1>
-          <button className='btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
-          <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='btn btn-primary'>View Completed Issues</Link>
+          <button className='new-issue-btn btn btn-primary' onClick={toggleCreateIssueState}>New Issue</button>
+          <Link to={{ pathname: `/${userId}/${projectName}/${projectId}/completed` }} className='completed-issues-btn btn btn-primary'>View Completed Issues</Link>
           {issuesToShow.length > 0 ? (
             <table className='table table-hover'>
               <thead>
                 <tr className='table-primary well well-sm'>
-                  <th>#</th>
-                  <th>Issue</th>
-                  <th>Type</th>
-                  <th data-sortable='true'>Priority</th>
-                  <th>Date Posted</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th className="d-none d-sm-table-cell">#</th>
+                  <th className="issue-text">Issue</th>
+                  <th className="d-none d-sm-table-cell">Type</th>
+                  <th className="d-none d-sm-table-cell" data-sortable='true'>Priority</th>
+                  <th className="d-none d-md-table-cell">Date Posted</th>
+                  <th className="issue-status">Status</th>
+                  <th className="issue-actions">Actions</th>
                 </tr>
               </thead>
         
