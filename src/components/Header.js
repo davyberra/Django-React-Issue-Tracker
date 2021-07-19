@@ -28,7 +28,7 @@ const Header = () => {
         <Link to='/dashboard' className='navbar-brand'>Django/React Issue Tracker</Link>
         <div id='navbarNav' className='collapse navbar-collapse'>
           <div className='navbar-nav'>
-            {isAuth === true && loading == false ? (
+            {isAuth === true ? (
               <>
                 <Link to='/dashboard' className='nav-link'>Project Dashboard</Link>
                 <Link to='/logout' className='nav-item nav-link'>Logout</Link>
