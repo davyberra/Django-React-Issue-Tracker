@@ -42,7 +42,7 @@ const Header = () => {
             }
           </div>
         </div>
-        {loading == false &&
+        {loading == false && user !== null &&
           <ul className="navbar-nav">
             <li className="nav-item">
               <div className='navbar-text'><strong>Hello, {user.username}!</strong></div>
