@@ -3,7 +3,6 @@ import datetime
 from django.test import TestCase
 from issue_tracker.models import Issue, Project, User
 
-
 class ProjectTestCase(TestCase):
     def setUp(self) -> None:
         test_user = User.objects.create_user(username="Test User")
@@ -50,3 +49,14 @@ class IssueTestCase(TestCase):
             in_progress=False,
             completed=False
         )
+
+    def test_issue_has_correct_field_types(self):
+        issue = Issue.objects.get(issue_text="first issue")
+        self.assertIsInstance(issue.issue_text, str)
+        self.assertIsInstance(issue.user, User)
+        self.assertIsInstance(issue.priority, str)
+        self.assertIsInstance(issue.date_posted, datetime.datetime)
+        self.assertEqual(issue.date_completed, None)
+        self.assertIsInstance(issue.issue_type, str)
+        self.assertIsInstance(issue.in_progress, bool)
+        self.assertIsInstance(issue.completed, bool)
